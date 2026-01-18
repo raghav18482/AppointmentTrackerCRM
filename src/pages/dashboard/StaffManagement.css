@@ -1,0 +1,96 @@
+/* StaffManagement.css */
+
+.action-btn-custom {
+    padding: 0.5rem;
+    /* p-2 */
+    border-radius: 0.5rem;
+    /* rounded-lg */
+    transition: all 0.2s ease;
+    color: white !important;
+    /* Force white default */
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-btn-custom:hover {
+    background-color: rgba(239, 68, 68, 0.1) !important;
+    /* bg-red-500/10 */
+    color: #ef4444 !important;
+    /* text-red-500 */
+}
+
+/* Active state (menu open) */
+.action-btn-custom.active {
+    background-color: #0f172a !important;
+    /* bg-slate-900 */
+    color: white !important;
+    box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+}
+
+/* Dropdown Menu Styling */
+.custom-dropdown-menu {
+    position: absolute;
+    right: 1rem;
+    top: 3rem;
+    width: 12rem;
+    /* w-48 */
+    background-color: #0f172a;
+    /* bg-slate-900 */
+    border: 1px solid rgba(51, 65, 85, 0.5);
+    /* border-slate-700/50 */
+    border-radius: 0.5rem;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.5);
+    z-index: 50;
+    overflow: hidden;
+    animation: fadeIn 0.1s ease-out;
+}
+
+.dropdown-item {
+    width: 100%;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    /* text-sm */
+    color: #cbd5e1;
+    /* text-slate-300 */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    transition: background-color 0.2s;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background-color: #1e293b;
+    /* bg-slate-800 */
+    color: white;
+}
+
+.dropdown-item.danger-action {
+    color: #f87171;
+    /* text-red-400 */
+    border-top: 1px solid rgba(51, 65, 85, 0.5);
+}
+
+.dropdown-item.danger-action:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #fca5a5;
+    /* text-red-300 */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
