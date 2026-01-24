@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
@@ -8,11 +8,12 @@ import BusinessSetup from './pages/dashboard/BusinessSetup';
 import CounterSetup from './pages/dashboard/CounterSetup';
 import StaffManagement from './pages/dashboard/StaffManagement';
 import LiveQueue from './pages/dashboard/LiveQueue';
+import { authService } from './services/authService';
 import './App.css';
 
 // Protected Route Component (Simple check)
 const ProtectedRoute = ({ children }) => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('access_token');
   if (!token) {
     return <Navigate to="/login" replace />;
   }
@@ -20,6 +21,16 @@ const ProtectedRoute = ({ children }) => {
 };
 
 function App() {
+  // Start refresh timer on app load if user is authenticated
+  useEffect(() => {
+    authService.startRefreshTimer();
+    
+    // Cleanup on unmount
+    return () => {
+      authService.stopRefreshTimer();
+    };
+  }, []);
+
   return (
     <Router>
       <div className="app-container">
