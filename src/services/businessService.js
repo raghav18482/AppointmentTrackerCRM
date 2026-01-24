@@ -18,7 +18,11 @@ export const businessService = {
         return response.data;
     },
 
-    // Get counters for a business (assuming endpoint exists or using generic list)
-    // For now, based on user input, we only saw CREATE.
-    // We'll add list later when API is confirmed.
+    // List counters
+    getCounters: async (businessId) => {
+        const response = await api.get('/counters/?include_inactive=false', {
+            headers: { 'X-Business-ID': businessId }
+        });
+        return response.data;
+    },
 };
